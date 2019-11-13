@@ -1,0 +1,40 @@
+.Modal__container {
+    
+    border-radius: 5px;
+    position: absolute;
+    top: 20px;
+    left: 320px;
+    width: 350px;
+    height: 250px;
+    margin-top: 150px;
+    background-color: #f7f7f7;
+    padding: 10px;
+    overflow-x: auto;
+    box-shadow: #D2D7D3;
+
+    &.Modal__wide {
+        width: 600px;
+        height: 300px;
+    }
+
+    > .Modal__header {
+        position: static;
+        padding: 5px;
+        width: 100%;
+        height: 15px;
+        color: black;
+        font: Bold 12px Roboto;
+        background-color: #D2D7D3;
+        color: #707070;
+        
+        > .Modal__close {
+            color: black;
+            float: right;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+}

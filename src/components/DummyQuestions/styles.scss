@@ -1,0 +1,143 @@
+.Question__container {
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1ch;
+    margin: 10px;
+    
+    >.Questions__title {
+        font-size: 15px;
+        min-width: 90px;
+
+        >.Question__actions {
+            margin-top: 100px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    } 
+
+    >.Questions__answer_options {
+        font-size: 10x;
+        margin: 15px;
+
+        >.option__actions {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            >.option__actions {
+                display: inline-block;
+                width: 400px;
+                color: #707070;
+
+                >.Option__action {
+                    margin-left: 15px;
+                    color: #707070;
+                }
+            }
+        }
+
+        > .Modal__title {
+            font-size: 5px;
+        } 
+    }
+
+    .EditOption__modal {
+        bottom: 100;
+    }
+
+    .attributes__list {
+        color: black;
+        margin: 5px;
+    }
+
+    .Edit__Questions__title {
+        font-size: 15px;
+        width: 300px;
+    }   
+
+    .Delete {
+        border-radius: 5px;
+        font-size: 10px;
+        margin: 5px;
+        height: 15px;
+        background-color: red;
+        color: white;
+        padding: 5px;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .Edit {
+        border-radius: 5px;
+        font-size: 12px;
+        margin: 5px;
+        background-color: black;
+        color: white;
+        padding: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .Cancel__changes {
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+
+    .Delete__Modal_actions {
+        display: flex;
+        justify-content: space-between;
+        width: 150px;
+        margin: 30px;
+        
+        > .Delete__Yes {
+            width: 50px;
+            border-radius: 5px;
+            background-color:#ff543d;
+            color: white;
+            text-align: center;
+        }
+
+        > .Delete__No {
+            width: 50px;
+            border-radius: 5px;
+            background-color: #32fa3c;
+            color: white;
+            text-align: center;
+        }
+    }
+
+    .EditOption__container {
+        display: flex;
+        justify-content: space-around;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        margin: 10px auto;
+        width: 200px;
+        background-color: white;
+        color: #707070;
+    }
+
+    .EditOption__input {
+        width: 80px;
+    }
+
+    .EditOption__icons {
+        display: flex;
+        justify-content: space-around;
+        width: 50px;
+        color: #707070;
+        border: 1px solid black;
+        border-radius: 5px;
+    }
+}
+
+
+

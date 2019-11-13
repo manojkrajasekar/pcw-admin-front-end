@@ -1,0 +1,67 @@
+.Question__container {
+    
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 1ch;
+    margin: 10px;
+    
+    >.Questions__title {
+        font-size: 15px;
+        min-width: 90px;
+        font: Bold 8px/16px Roboto;
+        color: #707070;
+    } 
+
+    >.Questions__answer_options {
+        font-size: 10x;
+        margin: 15px;
+        font: 10px/20px Roboto;
+        color: #707070;
+
+        >.option__actions {
+            display: none;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            >.option__actions {
+                display: inline-block;
+            }
+        }
+    }
+
+    .Edit__Questions__title {
+        font-size: 15px;
+        min-width: 200px;
+    }  
+
+    .Delete {
+        border-radius: 5px;
+        font-size: 10px;
+        margin: 5px;
+        background-color: red;
+        color: white;
+        padding: 5px;
+        
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .Edit {
+        border-radius: 5px;
+        font-size: 12px;
+        margin: 5px;
+        background-color: lightgray;
+        color: white;
+        padding: 4px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
+

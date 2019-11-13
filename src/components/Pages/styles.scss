@@ -1,0 +1,90 @@
+.PageContainer {
+    background-color: #f0f0f0;
+    
+    > .Add__question {
+        position: relative;
+        top: 5px;
+        left: 10px;
+        border-radius: 10px;
+        margin-right: 20px;
+        width: 15vw;
+        font: Bold 15px Roboto;
+        text-align: center;
+        color: white;
+        padding: 5px;  
+        background-color:rgb(132, 132, 146);
+        cursor: pointer;
+    }
+
+    .Question__label {
+        margin-top: 2px;
+        font: Bold 15px Roboto;
+        color: #707070;
+    }
+
+    .Question__input {
+        margin: 15px;
+        width: 500px;
+    }
+
+    .Add__button {
+        border-radius: 5px;
+        background-color: white;
+        color: #707070;
+        width: 130px;
+        margin-left: 50px;
+        text-align: center;
+
+        &:hover {
+            cursor: pointer;
+            color: white;
+            background-color: blue;
+        }
+    }
+
+    .Answer__container {
+        padding: 10px;
+        border: 1px solid black;
+        width: 80%;
+        height: auto;
+        border-radius: 5px;
+        margin: 10px auto;
+
+        >.Answer_label {
+            margin: 5px;
+            font: Bold 12px/24px Roboto;
+            color: #707070;
+        }
+
+        >.Add__attributes_container {
+            margin: 10px;
+            width: 100px;
+            border-radius: 10px;
+            border: 1px solid black;
+            
+            &:hover {
+                cursor: pointer;
+                background-color: #D2D7D3;
+                color: white;
+            }
+        }
+
+        >.Save__question {
+            border-radius: 5px;
+            padding: 5px;
+            background-color: #43ff43;
+            color: white;
+            float: right;
+            width: 30px;
+        }
+
+        > .Attribute__input {
+            margin: 5px;
+        }
+    }
+
+    .Add__attributes {
+        font: Bold 10px Roboto;
+        color: #707070;
+    }
+}

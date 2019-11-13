@@ -1,8 +1,10 @@
 import React from 'react';
-
+import Pages from '../components/Pages';
 
 function App() {
-    return <h1>This is our React Application</h1>
+    return <div>
+        <Pages />
+    </div>
 }
 
 export default App;
