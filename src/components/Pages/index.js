@@ -11,6 +11,7 @@ export default class Pages extends React.Component {
         super(props);
         this.state = {
             attributeAnswers: [{}],
+            answersCount: [{}],
             showAnswerAttributes: false,
             showAddQuestion: false,
             questionsData: [
@@ -152,7 +153,8 @@ export default class Pages extends React.Component {
 
         this.handleAddAnswers = () => {
             this.setState({
-                showAnswerAttributes: true
+                showAnswerAttributes: true,
+                answersCount: [...this.state.answersCount, ...[{}]]
             })    
         }
         
@@ -165,6 +167,12 @@ export default class Pages extends React.Component {
         this.RemoveAttributes = () => {
             this.setState({
                 attributeAnswers: [...this.state.attributeAnswers].splice(this.state.attributeAnswers.length-2, this.state.attributeAnswers.length-1)
+            })
+        }
+
+        this.deleteAnswer = () => {
+            this.setState({
+                answersCount: [...this.state.answersCount].splice(this.state.answersCount.length-2, this.state.answersCount.length-1)
             })
         }
     }
@@ -194,8 +202,9 @@ export default class Pages extends React.Component {
                             <div className="Add__button" onClick={() => { this.handleAddAnswers()}}>
                                 Add Answers
                             </div>
-                            {this.state.showAnswerAttributes && (
-                                <div className="Answer__container">
+                            
+                            {this.state.answersCount.map((item)=> {
+                                return <div className="Answer__container">
                                     <label className="Answer_label">Answer</label>
                                     <input type="text"></input>
                                     <div 
@@ -209,6 +218,14 @@ export default class Pages extends React.Component {
                                             Add Attributes
                                         </span>
                                     </div>
+                                    <span
+                                        className="Delete__answer"
+                                        onClick={() => { this.deleteAnswer() }}
+                                    >
+                                        Delete Answer
+                                        <HighlightOffIcon />
+                                    </span>
+                                    
                                     {this.state.attributeAnswers.map((element)=> {
                                         return <div className="Attribute__input">
                                                     <input type="text" />
@@ -219,7 +236,7 @@ export default class Pages extends React.Component {
                                     })}
                                     <span className="Save__question">Save</span>
                                 </div>
-                            )}
+                            })}
                         </Modal>
                     }
                     {this.state.questionsData.map((element) => {

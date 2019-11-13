@@ -61,7 +61,7 @@
             width: 100px;
             border-radius: 10px;
             border: 1px solid black;
-            
+
             &:hover {
                 cursor: pointer;
                 background-color: #D2D7D3;
@@ -86,5 +86,11 @@
     .Add__attributes {
         font: Bold 10px Roboto;
         color: #707070;
+    }
+
+    .Delete__answer {
+        &:hover {
+            cursor: pointer;
+        }
     }
 }
