@@ -1,10 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Modal from '../Modal';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import { deleteQuestion } from '../../redux/actions/addQuestion';
+import addQuestion from '../../redux/actions/addQuestion';
 import './styles.scss';
+
 
 class DummyQuestions extends React.Component {
 
@@ -156,14 +161,13 @@ class DummyQuestions extends React.Component {
             // Handle the Delete Attribute
         }
 
-        this.handleDeleteQuestion = () => {
-
+        this.handleDeleteQuestion = (id) => {
+            this.props.deleteQuestion(id);
         }
     }
 
     render() {
-        // console.log('QUESTIONS STATE', this.props.data);
-        // console.log('UPDATED QUESTION', this.state.questionValue1);
+        console.log('ALL QUESTIONS', this.props.questionsState);
         return (
             <div className="Question__container">
                 <div className="Questions__title">
@@ -205,20 +209,21 @@ class DummyQuestions extends React.Component {
                                 <Modal
                                     className="EditOption__modal"
                                     itemId={item._id}
-                                    modalTitle="Edit Questions"
+                                    modalTitle="Edit Answer"
+                                    closeModal={() => { this.closeAnswerOptionEdit(item) }}
                                 >
-                                    <span
-                                        className="Option__action" 
-                                        onClick={() => { this.closeAnswerOptionEdit(item) }}
-                                    >
-                                        <HighlightOffIcon />
-                                    </span>
                                     <input 
                                         className="EditOption__container"
                                         type="text" 
                                         value={item.value}
                                         onChange={(event, value) => { this.UpdateAnswerOption(event, item, value) }}
                                     />
+                                    <AddCircleOutlineIcon />
+                                    <span
+                                        className="Add__attributes"
+                                    >
+                                        Add Attributes
+                                    </span>
                                     {item.attributes && item.attributes.map((attr) => {
                                         console.log('STATE ATTR', this.state.editAttr);
                                         const isCurrentAttr = this.state.editAttr === attr;
@@ -310,4 +315,16 @@ class DummyQuestions extends React.Component {
     }
 }
 
-export default DummyQuestions;
+const mapStateToProps = state => {
+    return {
+        questionsState: state
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    deleteQuestion: (payload) => {
+        dispatch(deleteQuestion(payload))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(DummyQuestions);

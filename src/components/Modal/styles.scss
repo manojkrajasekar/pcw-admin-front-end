@@ -1,16 +1,16 @@
 .Modal__container {
-    
     border-radius: 5px;
     position: absolute;
-    top: 20px;
-    left: 320px;
-    width: 350px;
-    height: 250px;
+    top: 10px;
+    left: 120px;
     margin-top: 150px;
-    background-color: #f7f7f7;
-    padding: 10px;
     overflow-x: auto;
-    box-shadow: #D2D7D3;
+    z-index: 10000;
+    height: 78%;
+	margin: 0px; padding: 23px; 
+	border: 1px solid #FFF; border-radius: 3px;
+	background-color: #FFF;
+	box-shadow: 0 1px 6px #000;
 
     &.Modal__wide {
         width: 600px;
@@ -18,10 +18,10 @@
     }
 
     > .Modal__header {
-        position: static;
         padding: 5px;
         width: 100%;
-        height: 15px;
+        height: 18px;
+        border-radius:5px;
         color: black;
         font: Bold 12px Roboto;
         background-color: #D2D7D3;

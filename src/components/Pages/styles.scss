@@ -23,28 +23,30 @@
     }
 
     .Question__input {
-        margin: 15px;
-        width: 500px;
+        margin-top: 45px;
+        margin-left: 10px;
+        width: 300px;
     }
 
     .Add__button {
         border-radius: 5px;
-        background-color: white;
-        color: #707070;
+        color: white;
+        background-color: #D2D7D3;
         width: 130px;
-        margin-left: 50px;
+        padding: 5px;
+        margin: 30px 10px 10px 25px;
         text-align: center;
 
         &:hover {
             cursor: pointer;
             color: white;
-            background-color: blue;
+            background-color: #D2D7D3;
         }
     }
 
     .Answer__container {
         padding: 10px;
-        border: 1px solid black;
+        border: 2px solid #D2D7D3;
         width: 80%;
         height: auto;
         border-radius: 5px;
@@ -60,22 +62,27 @@
             margin: 10px;
             width: 100px;
             border-radius: 10px;
-            border: 1px solid black;
-
+            background-color: #D2D7D3;
+            color: white;
+            
             &:hover {
                 cursor: pointer;
-                background-color: #D2D7D3;
-                color: white;
+                
             }
         }
 
         >.Save__question {
             border-radius: 5px;
             padding: 5px;
-            background-color: #43ff43;
+            background-color: #D2D7D3;
             color: white;
             float: right;
             width: 30px;
+
+            &:hover {
+                background-color: #43ff43;
+                cursor: pointer;
+            }
         }
 
         > .Attribute__input {
@@ -89,6 +96,7 @@
     }
 
     .Delete__answer {
+        float: right;
         &:hover {
             cursor: pointer;
         }
