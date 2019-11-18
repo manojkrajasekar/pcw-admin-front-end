@@ -26,6 +26,7 @@ class DummyQuestions extends React.Component {
             showAttrbiuteEditText: false,
             editAttr: 0, 
             showDeleteConfirmation: false,
+            newAttribute: ' ',
         };
 
         this.handleEdit = (value) => {
@@ -157,12 +158,51 @@ class DummyQuestions extends React.Component {
             })
         }
 
-        this.handleAnswerAttrDelete = () => {
-            // Handle the Delete Attribute
-        }
-
         this.handleDeleteQuestion = (id) => {
             this.props.deleteQuestion(id);
+        }
+
+        this.addAttributesEditQuestion = (event, item, value) => {
+
+            console.log('ITEM', item);
+            console.log('ANSWER OPTIONS', this.state.answerOptions);
+            console.log('VALUE', event.target.value);
+            this.setState({
+                newAttribute: event.target.value,
+            })
+        }
+
+        this.saveNewAttribute = (event, item, value) => {
+            const updatedOptions = [...this.state.answerOptions.map((element) => {
+              if(element._id === item._id) {
+                  element.attributes = [ ...element.attributes, this.state.newAttribute];
+              }
+              return element;
+            })]
+
+            this.setState({
+                answerOptions: updatedOptions,
+            })
+
+            console.log('ANS:', this.state.answerOptions);
+        }
+
+        this.handleAnswerAttrDelete = (attr, item) => {
+            const updatedOptions = [...this.state.answerOptions.map((element) => {
+                if(element._id === item._id) {
+                    let elementIndex = element.attributes.indexOf(attr);
+                    element.attributes = [...element.attributes].filter((item) => {
+                        if(item !== attr) return item;
+                    })
+                }
+
+                return element;
+              })]
+            // console.log('ATTR TO BE DELETED', attr, item);
+            this.setState({
+                answerOptions: updatedOptions,
+            })
+            // console.log('DELTED ATTRIBUTES', updatedOptions);
         }
     }
 
@@ -220,10 +260,20 @@ class DummyQuestions extends React.Component {
                                     />
                                     <AddCircleOutlineIcon />
                                     <span
+                                        // onClick={(event, value) => { this.addAttributesEditQuestion(event, item, value) }}
                                         className="Add__attributes"
                                     >
-                                        Add Attributes
+                                        Add Attributes in Edit
                                     </span>
+                                    <input 
+                                        type="text"
+                                        onChange={(event, value) => { this.addAttributesEditQuestion(event, item, value) }}
+                                    />
+                                    <div 
+                                        onClick={(event) => { this.saveNewAttribute(event, item) }}
+                                    >
+                                        Save Attribute
+                                    </div>
                                     {item.attributes && item.attributes.map((attr) => {
                                         console.log('STATE ATTR', this.state.editAttr);
                                         const isCurrentAttr = this.state.editAttr === attr;
@@ -242,7 +292,7 @@ class DummyQuestions extends React.Component {
                                                         />
                                                     )}
                                                     <span 
-                                                        onClick={() => { handleAnswerAttrDelete(attr) }}
+                                                        onClick={() => { this.handleAnswerAttrDelete(attr, item) }}
                                                     >   
                                                         <DeleteIcon fontSize="small" />
                                                     </span>
