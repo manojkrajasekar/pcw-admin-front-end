@@ -182,7 +182,12 @@ class Pages extends React.Component {
             })
         }
 
-        this.RemoveAttributes = () => {
+        this.RemoveAttributes = (event, item) => {
+            const nonRemovedAttributes = this.state.answersCount.filter((element) => {
+                if(i.answerId === item.answerId) return i;
+            })
+
+            console.log('NON REMOVED ATTRIBUTES', nonRemovedAttributes);
             this.setState({
                 attributeAnswers: [...this.state.attributeAnswers].splice(this.state.attributeAnswers.length-2, this.state.attributeAnswers.length-1)
             })
@@ -214,10 +219,10 @@ class Pages extends React.Component {
             // console.log('MATCHING ANSWER', matchingAnswer.attributes.length);
             const updateAttributes = matchingAnswer[0].attributes.map((element) => {
                 if(element.attributeId == item.attributeId) {
-                    debugger;
+                    // debugger;
                     element.attribute = event.target.value
                 }
-                debugger;
+                // debugger;
                 return element;
             })
 

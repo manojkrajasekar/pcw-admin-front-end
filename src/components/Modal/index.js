@@ -14,14 +14,16 @@ export default class Modal extends React.Component {
     
     render() {
         return (
-            <div className={`Modal__container ${this.props.modalType === 'Wide' ? 'Modal__wide' : ''}`}>
-                <div className={`${this.props.modalTitle && 'Modal__header'}`}>
-                    {this.props.modalTitle}
-                    <span className="Modal__close" onClick={ this.handleCloseModal}>
-                        <HighlightOffIcon />
-                    </span>
+            <div className="Modale">
+                <div className={`Modal__container ${this.props.modalType === 'Wide' ? 'Modal__wide' : ''}`}>
+                    <div className={`${this.props.modalTitle && 'Modal__header'}`}>
+                        {this.props.modalTitle}
+                        <span className="Modal__close" onClick={ this.handleCloseModal}>
+                            <HighlightOffIcon />
+                        </span>
+                    </div>
+                    <div>{this.props.children}</div>
                 </div>
-                <div>{this.props.children}</div>
             </div>
         )
     }
