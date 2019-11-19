@@ -27,6 +27,7 @@ class DummyQuestions extends React.Component {
             editAttr: 0, 
             showDeleteConfirmation: false,
             newAttribute: ' ',
+            showNewAttribueField: false,
         };
 
         this.handleEdit = (value) => {
@@ -173,17 +174,20 @@ class DummyQuestions extends React.Component {
         }
 
         this.saveNewAttribute = (event, item, value) => {
-            const updatedOptions = [...this.state.answerOptions.map((element) => {
-              if(element._id === item._id) {
-                  element.attributes = [ ...element.attributes, this.state.newAttribute];
-              }
-              return element;
-            })]
-
-            this.setState({
-                answerOptions: updatedOptions,
-            })
-
+            console.log('NEW ATTRIBUTE:', this.state.newAttribute);
+            if(this.state.newAttribute !== ' ') {
+                const updatedOptions = [...this.state.answerOptions.map((element) => {
+                    if(element._id === item._id) {
+                        element.attributes = [ ...element.attributes, this.state.newAttribute];
+                    }
+                    return element;
+                })]
+      
+                this.setState({
+                    answerOptions: updatedOptions,
+                })
+            }
+            
             console.log('ANS:', this.state.answerOptions);
         }
 
@@ -203,6 +207,12 @@ class DummyQuestions extends React.Component {
                 answerOptions: updatedOptions,
             })
             // console.log('DELTED ATTRIBUTES', updatedOptions);
+        }
+
+        this.showNewAttribute = () => {
+            this.setState({
+                showNewAttribueField: true,
+            })
         }
     }
 
@@ -260,26 +270,31 @@ class DummyQuestions extends React.Component {
                                     />
                                     <AddCircleOutlineIcon />
                                     <span
-                                        // onClick={(event, value) => { this.addAttributesEditQuestion(event, item, value) }}
+                                        className="EditOption__input"
+                                        onClick={() => { this.showNewAttribute() }}
                                         className="Add__attributes"
                                     >
-                                        Add Attributes in Edit
+                                        Add New Attribute
                                     </span>
-                                    <input 
-                                        type="text"
-                                        onChange={(event, value) => { this.addAttributesEditQuestion(event, item, value) }}
-                                    />
-                                    <div 
-                                        onClick={(event) => { this.saveNewAttribute(event, item) }}
-                                    >
-                                        Save Attribute
-                                    </div>
+                                    {this.state.showNewAttribueField && 
+                                        <React.Fragment>
+                                            <input 
+                                                type="text"
+                                                onChange={(event, value) => { this.addAttributesEditQuestion(event, item, value) }}
+                                            />
+                                            <span
+                                                className="Save__attribute" 
+                                                onClick={(event) => { this.saveNewAttribute(event, item) }}
+                                            >
+                                                Save
+                                            </span>
+                                        </React.Fragment>
+                                    }
                                     {item.attributes && item.attributes.map((attr) => {
                                         console.log('STATE ATTR', this.state.editAttr);
                                         const isCurrentAttr = this.state.editAttr === attr;
                                        return <div className="attributes__list">
                                             <div className="EditOption__container">
-                                                
                                                 {!isCurrentAttr && (
                                                     <span>{attr}</span>
                                                 )}
@@ -292,17 +307,16 @@ class DummyQuestions extends React.Component {
                                                         />
                                                     )}
                                                     <span 
-                                                        onClick={() => { this.handleAnswerAttrDelete(attr, item) }}
-                                                    >   
-                                                        <DeleteIcon fontSize="small" />
-                                                    </span>
-                                                    <span 
                                                         color="primary"
                                                         onClick={(value) => { this.showAnswerOptionEdit(item, attr, value) }}
                                                     >
                                                         <EditIcon />
                                                     </span>
-                                                
+                                                    <span 
+                                                        onClick={() => { this.handleAnswerAttrDelete(attr, item) }}
+                                                    >   
+                                                        <DeleteIcon fontSize="small" />
+                                                    </span>
                                                 {isCurrentAttr && (
                                                     <span onClick={() => { this.removeEdit() }}>
                                                         <HighlightOffIcon />
